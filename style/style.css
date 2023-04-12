@@ -1,0 +1,5 @@
+/* Hover sull'icona del cestino */
+.fa-trash:hover{
+    scale: 1.5;
+    cursor: pointer;
+}
