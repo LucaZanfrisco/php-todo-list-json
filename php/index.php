@@ -1,18 +1,33 @@
 <?php
-    // Ricezione di un parametro tramite form in POST
-    $add = isset($_POST['newTodo']) ? $_POST['newTodo'] : NULL;
+    // Ricezione di un parametro tramite form in POST o GEt
+    $add = isset($_POST['newTodo']) ? $_POST['newTodo'] : '';
+    $done = isset($_GET['done']) ? $_GET['done'] : NULL;
+    $delete = isset($_GET['delete']) ? $_GET['delete'] : NULL;
     
     // Lettura e decodifica del file json
     $todo = file_get_contents(__DIR__.'/../todo.json');
     $todo = json_decode($todo,true);
 
     // Aggiunta del nuovo ToDo
-    if($add !== NULL){
+    if($add !== ''){
         $todo[] = [
             'text' => $add,
             'done' => false,
         ];
     };
+    // Modfica della variabile di done nell'array associativo
+    if($done !== NULL){
+        if($todo[$done]['done'] === false){
+            $todo[$done]['done'] = true;
+        }else{
+             $todo[$done]['done'] = false;
+        }
+    };
+    // Cancella l'elemento selezionato dal file json
+    if($delete !== NULL){
+        array_splice($todo,$delete);
+    };
+    
     // Codifica in formato json
     $todo = json_encode($todo);
     // Aggiunta del Todo al file json

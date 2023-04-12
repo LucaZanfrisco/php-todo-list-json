@@ -17,17 +17,31 @@ createApp({
                 headers: {'Content-Type' : 'multipart/form-data'}
             })
             .then((response) => {
-                console.log(response);
                 this.todo = response.data;
             })
             this.newTodo = '';
         },
+        // Metodo che fa fare il toggle fatto/Da fare sulla ToDo
         done(index){
-            if(this.todo[index].done === false){
-              this.todo[index].done = true;  
-            }else{
-                this.todo[index].done = false;
+            axios.get('php/index.php',{
+              params: {  
+                done: index
             }
+            })
+            .then((response) => {
+                this.todo = response.data;
+            })
+        },
+        // Metodo che permette di cancellare un elemento della lista
+        deleteTodo(index){
+            axios.get('php/index.php',{
+              params: {  
+                delete: index
+            }
+            })
+            .then((response) => {
+                this.todo = response.data;
+            })
         }
     },
     created() {
