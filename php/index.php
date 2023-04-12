@@ -1,8 +1,8 @@
 <?php
     // Ricezione di un parametro tramite form in POST o GEt
     $add = isset($_POST['newTodo']) ? $_POST['newTodo'] : '';
-    $done = isset($_GET['done']) ? $_GET['done'] : NULL;
-    $delete = isset($_GET['delete']) ? $_GET['delete'] : NULL;
+    $done = isset($_POST['done']) ? $_POST['done'] : NULL;
+    $delete = isset($_POST['delete']) ? $_POST['delete'] : NULL;
     
     // Lettura e decodifica del file json
     $todo = file_get_contents(__DIR__.'/../todo.json');

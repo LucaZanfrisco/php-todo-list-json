@@ -23,10 +23,11 @@ createApp({
         },
         // Metodo che fa fare il toggle fatto/Da fare sulla ToDo
         done(index){
-            axios.get('php/index.php',{
-              params: {  
+            const data = {
                 done: index
             }
+            axios.post('php/index.php',data,{
+                headers: {'Content-Type' : 'multipart/form-data'}
             })
             .then((response) => {
                 this.todo = response.data;
@@ -34,14 +35,15 @@ createApp({
         },
         // Metodo che permette di cancellare un elemento della lista
         deleteTodo(index){
-            axios.get('php/index.php',{
-              params: {  
+            const data = {
                 delete: index
             }
-            })
-            .then((response) => {
+            axios.post("php/index.php", data, {
+                headers: { "Content-Type": "multipart/form-data" },
+              })
+              .then((response) => {
                 this.todo = response.data;
-            })
+              });
         }
     },
     created() {
