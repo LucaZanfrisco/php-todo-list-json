@@ -19,19 +19,19 @@
         <div class="container p-3">
             <h1 class="text-center">ToDo</h1>
             <!-- Form per l'aggiunta di ToDo -->
-            <form class="input-group" method="get" action="index.html">
+            <form class="input-group" @submit.prevent="Add">
                 <label for="addTodo" class="input-group-text">Aggiungi ToDo</label>
-                <input type="text" name="add" id="addTodo" class="form-control">
+                <input type="text" name="add" id="addTodo" class="form-control" v-model="newTodo">
                 <button type="submit" class="btn btn-success">Aggiungi</button>
             </form>
-        </div>
-        <!-- Lista dei Todo -->
-        <ul class="list-unstyled p-3">
+            <!-- Lista dei Todo -->
+            <ul class="list-unstyled p-3">
             <li v-for="element in todo" class="card p-3 border-primary m-1 flex-row align-items-center">
-                <div class="col fw-bold fs-5">{{ element.text }}</div>
+                <div class="col fw-bold fs-5" :class="{'text-decoration-line-through': element.done}">{{ element.text }}</div>
                 <i class="fa-solid fa-trash col-auto text-danger fs-4"></i>
             </li>
         </ul>
+        </div>
     </div>
 
 
