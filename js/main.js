@@ -10,7 +10,6 @@ createApp({
     methods: {
         // Metodo che permette di aggiungere un nuovo ToDo
         Add(){
-            console.log('aggiunto');
             const data = {
                 newTodo: this.newTodo,
             }
@@ -21,6 +20,14 @@ createApp({
                 console.log(response);
                 this.todo = response.data;
             })
+            this.newTodo = '';
+        },
+        done(index){
+            if(this.todo[index].done === false){
+              this.todo[index].done = true;  
+            }else{
+                this.todo[index].done = false;
+            }
         }
     },
     created() {

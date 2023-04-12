@@ -26,8 +26,8 @@
             </form>
             <!-- Lista dei Todo -->
             <ul class="list-unstyled p-3">
-            <li v-for="element in todo" class="card p-3 border-primary m-1 flex-row align-items-center">
-                <div class="col fw-bold fs-5" :class="{'text-decoration-line-through': element.done}">{{ element.text }}</div>
+            <li v-for="(element,index) in todo" class="card p-3 border-primary m-1 flex-row align-items-center">
+                <div class="col fw-bold fs-5" :class="{'text-decoration-line-through': element.done}" @click="done(index)">{{ element.text }}</div>
                 <i class="fa-solid fa-trash col-auto text-danger fs-4"></i>
             </li>
         </ul>
