@@ -25,12 +25,13 @@
                 <button type="submit" class="btn btn-success">Aggiungi</button>
             </form>
             <!-- Lista dei Todo -->
-            <ul class="list-unstyled p-3">
+            <ul class="list-unstyled p-3" v-if="todo.length > 0">
                 <li v-for="(element,index) in todo" class="card p-3 border-primary m-1 flex-row align-items-center" :class="{'bg-success-subtle': element.done}">
                     <div class="col fw-bold fs-5 todo text-capitalize" :class="{'text-decoration-line-through': element.done}" @click="done(index)">{{ element.text }}</div>
                     <i class="fa-solid fa-trash col-auto text-danger fs-4" @click="deleteTodo(index)"></i>
                 </li>
             </ul>
+            <div v-else class="text-center mt-3 fs-4 bg-danger card p-3 fw-bold">La Lista è vuota</div>
         </div>
     </div>
 

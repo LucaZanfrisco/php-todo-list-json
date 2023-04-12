@@ -17,7 +17,7 @@
     };
     // Modfica della variabile di done nell'array associativo
     if($done !== NULL){
-        if($todo[$done]['done'] === false){
+        if(!$todo[$done]['done']){
             $todo[$done]['done'] = true;
         }else{
              $todo[$done]['done'] = false;
@@ -27,7 +27,7 @@
     if($delete !== NULL){
         array_splice($todo,$delete);
     };
-    
+
     // Codifica in formato json
     $todo = json_encode($todo);
     // Aggiunta del Todo al file json
